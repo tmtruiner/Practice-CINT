@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.drop-area {
+    border: 2px dashed #ccc;
+    background: #f3f3f3;
+    border-radius: 20px;
+    width: 700px;
+    height: 200px;
+    font-family: sans-serif;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.drop-area.active {
+    border-color: cornflowerblue;
+    background: #81a7ec;
+}
