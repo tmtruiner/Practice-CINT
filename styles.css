@@ -4,18 +4,22 @@
 }
 
 .drop-area {
-    border: 2px dashed #ccc;
+    border: 5px dotted #ccc;
     background: #f3f3f3;
     border-radius: 20px;
     width: 700px;
     height: 200px;
     font-family: sans-serif;
-    margin: 50px auto;
+    margin: 20px auto;
     padding: 20px;
     text-align: center;
 }
 
 .drop-area.active {
+    border-color: cornflowerblue;
+    background: #81a7ec;
+}
+.drop-area-title ::selection {
     border-color: cornflowerblue;
     background: #81a7ec;
 }
