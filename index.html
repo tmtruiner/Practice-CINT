@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="drop-area active">
-        <h3 class="drop-area-title">
-            Перетащите файлы сюда
-        </h3>
+    <div class="drop-area">
+        <h3 class>Перетащите файлы сюда</h3>
+        <h4>или</h2>
+        <input type="file" id="file-input" style="display: none;">
+        <button class="file-input-button" onclick="document.getElementById('file-input').click()">Выбрать файлы</button>
     </div>
     <div id="file-list"></div>
 <script src="js/script.js"></script>
