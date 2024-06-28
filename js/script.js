@@ -1,6 +1,7 @@
 const dropArea = document.querySelector('.drop-area');
-const fileInput = document.getElementById('file-input');
-const fileList = document.getElementById('file-list');
+const fileInput = document.querySelector('.file-input');
+const fileInputButton = document.querySelector('.file-input-button');
+const fileList = document.querySelector('.file-list');
 const groups = new Map();
 
 ["dragover", "drop"].forEach((event) => {
@@ -11,18 +12,22 @@ const groups = new Map();
 
 dropArea.addEventListener('dragenter', () => {
     dropArea.classList.add('active');
+    fileInputButton.classList.add('active');
 });
 
 dropArea.addEventListener('dragover', () => {
     dropArea.classList.add('active');
+    fileInputButton.classList.add('active');
 });
 
 dropArea.addEventListener('dragleave', () => {
     dropArea.classList.remove('active');
+    fileInputButton.classList.remove('active');
 });
 
 dropArea.addEventListener('drop', (event) => {
     dropArea.classList.remove('active');
+    fileInputButton.classList.remove('active');
     const files = event.dataTransfer.files;
     handleFiles(files);
 });
@@ -51,19 +56,21 @@ function displayGroups(groups) {
     for (let [group, files] of groups) {
       let groupDiv = document.createElement('div');
       groupDiv.classList.add('group');
-      groupDiv.style.display = 'inline-block';
   
-      const groupHeader = document.createElement('strong');
+      let groupHeader = document.createElement('strong');
       groupHeader.textContent = group + ': ' + files.length + ' файлов';
       groupDiv.appendChild(groupHeader);
-  
-      groupDiv.appendChild(document.createElement('br'));
 
-      const fileListText = document.createElement('div');
-      fileListText.textContent = files.join(' ');
-      groupDiv.appendChild(fileListText);
-      
+      groupDiv.appendChild(document.createElement('br'));
   
+      let fileListText = document.createElement('div');
+      files.forEach(file => {
+        let fileElement = document.createElement('div');
+        fileElement.textContent = file;
+        fileListText.appendChild(fileElement);
+      });
+  
+      groupDiv.appendChild(fileListText);
       fileList.appendChild(groupDiv);
     }
-  }
+}

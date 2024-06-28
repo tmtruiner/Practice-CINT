@@ -8,15 +8,23 @@
     margin: 10px auto;
     padding: 20px;
     text-align: center;
+    user-select: none; 
+}
+
+.drop-area-text{
+    display: inline-block;
+}
+
+.drop-area-button {
+    display: inline-block;
 }
 
 .active {
-    border-color: cornflowerblue;
     background: #81a7ec;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-#file-list {
+.file-list {
     width: 700px;
     font-family: sans-serif;
     margin: 10px auto;
@@ -25,10 +33,11 @@
 .group {
     width: 100%;
     padding: 5px;
+    margin: 5px;
     border: 1px solid #ccc;
 }
 
-.file-input-button{
+.file-input-button {
     border: 5px dashed #ccc;
 }
 

@@ -7,12 +7,17 @@
 </head>
 <body>
     <div class="drop-area">
-        <h3 class>Перетащите файлы сюда</h3>
-        <h4>или</h2>
-        <input type="file" id="file-input" style="display: none;">
-        <button class="file-input-button" onclick="document.getElementById('file-input').click()">Выбрать файлы</button>
+        <div class="drop-area-text">
+            <h3>Перетащите файлы сюда</h3>
+            <h4>или</h2>
+        </div>
+        <br> <!-- Временно --> 
+        <div class="drop-area-button">
+            <input type="file" class="file-input" style="display: none;">
+            <button class="file-input-button" onclick="document.querySelector('.file-input').click()">Выбрать файлы</button>
+        </div>
     </div>
-    <div id="file-list"></div>
+    <div class="file-list"></div>
 <script src="js/script.js"></script>
 </body>
 </html>
