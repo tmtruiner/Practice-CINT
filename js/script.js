@@ -20,9 +20,11 @@ dropArea.addEventListener('dragover', () => {
     fileInputButton.classList.add('active');
 });
 
-dropArea.addEventListener('dragleave', () => {
-    dropArea.classList.remove('active');
-    fileInputButton.classList.remove('active');
+dropArea.addEventListener('dragleave', (event) => {
+    if (!dropArea.contains(event.relatedTarget)) {
+        dropArea.classList.remove('active');
+        fileInputButton.classList.remove('active');
+    }
 });
 
 dropArea.addEventListener('drop', (event) => {
@@ -54,23 +56,21 @@ function handleFiles(files) {
 function displayGroups(groups) {
     fileList.innerHTML = '';
     for (let [group, files] of groups) {
-      let groupDiv = document.createElement('div');
-      groupDiv.classList.add('group');
-  
-      let groupHeader = document.createElement('strong');
-      groupHeader.textContent = group + ': ' + files.length + ' файлов';
-      groupDiv.appendChild(groupHeader);
+        let groupDiv = document.createElement('div');
+        groupDiv.classList.add('group');
 
-      groupDiv.appendChild(document.createElement('br'));
-  
-      let fileListText = document.createElement('div');
-      files.forEach(file => {
-        let fileElement = document.createElement('div');
-        fileElement.textContent = file;
-        fileListText.appendChild(fileElement);
-      });
-  
-      groupDiv.appendChild(fileListText);
-      fileList.appendChild(groupDiv);
+        let groupHeader = document.createElement('strong');
+        groupHeader.textContent = group + ': ' + files.length + ' файлов';
+        groupDiv.appendChild(groupHeader);
+
+        let fileListText = document.createElement('div');
+        files.forEach(file => {
+            let fileElement = document.createElement('div');
+            fileElement.textContent = file;
+            fileListText.appendChild(fileElement);
+        });
+
+        groupDiv.appendChild(fileListText);
+        fileList.appendChild(groupDiv);
     }
 }

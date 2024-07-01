@@ -11,14 +11,6 @@
     user-select: none; 
 }
 
-.drop-area-text{
-    display: inline-block;
-}
-
-.drop-area-button {
-    display: inline-block;
-}
-
 .active {
     background: #81a7ec;
     transition: background-color 0.3s, border-color 0.3s;
@@ -40,4 +32,3 @@
 .file-input-button {
     border: 5px dashed #ccc;
 }
-
