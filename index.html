@@ -6,17 +6,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="drop-area">
-        <div class="drop-area-text">
-            <h3>Перетащите файлы сюда</h3>
-            <h4>или</h2>
+    <div class="drag-and-drop-container">
+        <div class="drop-area">
+            <div class="drop-area-text">
+                <h3>Перетащите файлы сюда</h3>
+                <h4>или</h2>
+            </div>
+            <div class="drop-area-button">
+                <input type="file" class="file-input" style="display: none;">
+                <button class="file-input-button" onclick="document.querySelector('.file-input').click()">Выбрать файлы</button>
+            </div>
         </div>
-        <div class="drop-area-button">
-            <input type="file" class="file-input" style="display: none;">
-            <button class="file-input-button" onclick="document.querySelector('.file-input').click()">Выбрать файлы</button>
+    
+        <div class="button-container">
+            <button class="clear-list-button">Clear List</button>
+            <button class="upload-button">Upload Files</button>
         </div>
+    
+        <div class="file-list"></div>
     </div>
-    <div class="file-list"></div>
 <script src="js/script.js"></script>
 </body>
 </html>

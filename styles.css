@@ -1,11 +1,18 @@
+.drag-and-drop-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    max-width: 700px;
+    margin: 10px auto;
+}
+
 .drop-area {
     border: 5px dashed #ccc;
     background: #f3f3f3;
     border-radius: 20px;
-    width: 700px;
+    width: 100%;
     height: 200px;
     font-family: sans-serif;
-    margin: 10px auto;
     padding: 20px;
     text-align: center;
     user-select: none; 
@@ -17,9 +24,9 @@
 }
 
 .file-list {
-    width: 700px;
+    width: 100%;
     font-family: sans-serif;
-    margin: 10px auto;
+    margin: auto;
 }
 
 .group {
@@ -31,4 +38,12 @@
 
 .file-input-button {
     border: 5px dashed #ccc;
+    
+}
+
+.button-container {
+    width: 100%;
+    padding: 5px;
+    margin: auto;
+    text-align: right;
 }

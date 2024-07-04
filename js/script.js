@@ -2,42 +2,9 @@ const dropArea = document.querySelector('.drop-area');
 const fileInput = document.querySelector('.file-input');
 const fileInputButton = document.querySelector('.file-input-button');
 const fileList = document.querySelector('.file-list');
+const clearListButton = document.querySelector('.clear-list-button');
+const uploadButton = document.querySelector('.clear-list-button');
 const groups = new Map();
-
-["dragover", "drop"].forEach((event) => {
-    document.addEventListener(event, (evt) => {
-        evt.preventDefault();
-    });
-});
-
-dropArea.addEventListener('dragenter', () => {
-    dropArea.classList.add('active');
-    fileInputButton.classList.add('active');
-});
-
-dropArea.addEventListener('dragover', () => {
-    dropArea.classList.add('active');
-    fileInputButton.classList.add('active');
-});
-
-dropArea.addEventListener('dragleave', (event) => {
-    if (!dropArea.contains(event.relatedTarget)) {
-        dropArea.classList.remove('active');
-        fileInputButton.classList.remove('active');
-    }
-});
-
-dropArea.addEventListener('drop', (event) => {
-    dropArea.classList.remove('active');
-    fileInputButton.classList.remove('active');
-    const files = event.dataTransfer.files;
-    handleFiles(files);
-});
-
-fileInput.addEventListener('change', (event) => {
-    const files = event.target.files;
-    handleFiles(files);
-});
 
 function handleFiles(files) {
     for (let file of files) {
@@ -74,3 +41,54 @@ function displayGroups(groups) {
         fileList.appendChild(groupDiv);
     }
 }
+
+function uploadFiles(files) {
+    ///
+}
+
+["dragover", "drop"].forEach((event) => {
+    document.addEventListener(event, (evt) => {
+        evt.preventDefault();
+    });
+});
+
+dropArea.addEventListener('dragenter', () => {
+    dropArea.classList.add('active');
+    fileInputButton.classList.add('active');
+});
+
+dropArea.addEventListener('dragover', () => {
+    dropArea.classList.add('active');
+    fileInputButton.classList.add('active');
+});
+
+dropArea.addEventListener('dragleave', (event) => {
+    if (!dropArea.contains(event.relatedTarget)) {
+        dropArea.classList.remove('active');
+        fileInputButton.classList.remove('active');
+    }
+});
+
+dropArea.addEventListener('drop', (event) => {
+    dropArea.classList.remove('active');
+    fileInputButton.classList.remove('active');
+    const files = event.dataTransfer.files;
+    handleFiles(files);
+});
+
+fileInput.addEventListener('change', (event) => {
+    const files = event.target.files;
+    handleFiles(files);
+});
+
+clearListButton.addEventListener('click', () => {
+    groups.clear();
+    fileList.innerHTML = '';
+});
+
+uploadButton.addEventListener('click', () => {
+    const files = fileInput.files;
+    uploadFiles(files);
+});
+
+
