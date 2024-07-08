@@ -31,10 +31,28 @@ function displayGroups(groups) {
         groupDiv.appendChild(groupHeader);
 
         let fileListText = document.createElement('div');
-        files.forEach(file => {
-            let fileElement = document.createElement('div');
-            fileElement.textContent = file;
-            fileListText.appendChild(fileElement);
+        fileListText.classList.add('file-list-text')
+        files.forEach((file, index) => {
+            let removeButton = document.createElement('button');
+            let fileListElement = document.createElement('div');
+            fileListElement.classList.add('file-list-element')
+
+            removeButton.textContent = '✖';
+            removeButton.classList.add('remove-button');
+            removeButton.onclick = () => {
+                files.splice(index, 1);
+                if (files.length === 0) {
+                    groups.delete(group);
+                }
+                displayGroups(groups);
+            };
+
+            let fileName = document.createElement('span');
+            fileName.textContent = file;
+
+            fileListElement.appendChild(removeButton);
+            fileListElement.appendChild(fileName);
+            fileListText.appendChild(fileListElement);
         });
 
         groupDiv.appendChild(fileListText);
@@ -90,5 +108,3 @@ uploadButton.addEventListener('click', () => {
     const files = fileInput.files;
     uploadFiles(files);
 });
-
-
