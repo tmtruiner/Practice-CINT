@@ -2,8 +2,7 @@ const dropArea = document.querySelector('.drop-area');
 const fileInput = document.querySelector('.file-input');
 const fileInputButton = document.querySelector('.file-input-button');
 const fileList = document.querySelector('.file-list');
-const clearListButton = document.querySelector('.clear-list-button');
-const uploadButton = document.querySelector('.upload-button');
+const clearFileListButton = document.querySelector('.clear-file-list-button');
 
 const MAX_FILE_SIZE = 20 * 1024 * 1024; // Максимальный размер файла 20 Мбайт
 const fileGroups = new Map();
@@ -14,6 +13,10 @@ function handleFiles(files) { // Функция для обработки выб
             continue; // Пропускаем файлы если их размер превышает MAX_FILE_SIZE
         }
 
+        if (file.type === '') {
+            continue; // Пропуск папок
+        }
+        
         let name = file.name;
         let groupName = name.split('-')[0]; // Разделение имени файла по символу "-" и извлечение первой части имени файла. К примеру файл с именем "шапка-blue.png" будет 
                                             // присвоен группе с именем "шапка" 
@@ -66,10 +69,6 @@ function displayGroups(fileGroups) { // Функция для отображен
     }
 }
 
-function uploadFiles(files) { //Функция для загрузки файлов на сервер
-    ///
-}
-
 ["dragover", "drop"].forEach((event) => {
     document.addEventListener(event, (evt) => {
         evt.preventDefault(); // Предотвращение стандартного поведения браузера для событий dragover и drop
@@ -105,12 +104,7 @@ fileInput.addEventListener('change', (event) => {
     handleFiles(files); // Обработка выбранных файлов при выборе через кнопку fileInputButton
 });
 
-clearListButton.addEventListener('click', () => { // Очистка групп файлов
+clearFileListButton.addEventListener('click', () => { // Очистка групп файлов
     fileGroups.clear();
     fileList.innerHTML = '';
-});
-
-uploadButton.addEventListener('click', () => {
-    const files = fileInput.files;
-    uploadFiles(files);
 });
