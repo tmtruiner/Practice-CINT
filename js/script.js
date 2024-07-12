@@ -4,7 +4,7 @@ const fileInputButton = document.querySelector('.file-input-button');
 const fileList = document.querySelector('.file-list');
 const clearFileListButton = document.querySelector('.clear-file-list-button');
 
-const MAX_FILE_SIZE = 20 * 1024 * 1024; // Максимальный размер файла 20 Мбайт
+const MAX_FILE_SIZE = 20 * 1000 * 1000; // Максимальный размер файла 20 Мбайт
 const fileGroups = new Map();
 
 function handleFiles(files) { // Функция для обработки выбранных файлов
